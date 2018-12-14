@@ -9,10 +9,26 @@ from .models import UserMessage
 
 
 def getform(request):
+    message = None
+    all_messages = UserMessage.objects.filter(name='bobbytest')
+    if all_messages:
+        message = all_messages[0]  # all_message是一个queryset，只取其中第一条数据
+
+    return render(request, 'message_form.html', {
+        "my_message":message
+    })  # my_message为自定义的对象，message的值将传入给my_message，在html中调用
+
+
+
+
+
+
+
+
     # get all data
-    all_messages = UserMessage.objects.all()
-    for message in all_messages:
-        print message.name
+    # all_messages = UserMessage.objects.all()
+    # for message in all_messages:
+    #     print message.name
 
     # delete data
     # all_messages = UserMessage.objects.filter(name='bobby', address='beijing')
@@ -41,4 +57,4 @@ def getform(request):
     #     user_message.object_id = "helloworld4"
     #     user_message.save()
 
-    return render(request, 'message_form.html')
+    # return render(request, 'message_form.html')
