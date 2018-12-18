@@ -5,6 +5,16 @@ __date__ = '12/17/2018 2:59 PM'
 import xadmin
 
 from .models import EmailVerifyRecord, Banner, UserProfile
+from xadmin import views
+
+class BaseSetting(object):
+    enable_themes = True
+    use_bootswatch = True
+
+class GlobalSettings(object):
+    site_title = "慕学后台管理系统"
+    site_footer = "慕学在线网"
+    menu_style = "accordion"
 
 
 class EmailVerifyRecordAdmin(object):
@@ -22,3 +32,5 @@ class BannerAdmin(object):
 # 将model与admin管理器进行关联注册
 xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)
 xadmin.site.register(Banner, BannerAdmin)
+xadmin.site.register(views.BaseAdminView, BaseSetting)
+xadmin.site.register(views.CommAdminView, GlobalSettings)

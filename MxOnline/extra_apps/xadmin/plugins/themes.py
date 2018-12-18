@@ -10,6 +10,7 @@ from xadmin.models import UserSettings
 from xadmin.views import BaseAdminPlugin, BaseAdminView
 from xadmin.util import static, json
 import six
+import requests
 if six.PY2:
     import urllib
 else:
